@@ -9,13 +9,27 @@
 #define BOOST_ENDIAN_CONVERSION_HPP
 
 #include <boost/config.hpp>
-#include <boost/predef/detail/endian_compat.h>
+//#include <boost/predef/detail/endian_compat.h>
 #include <boost/cstdint.hpp>
 #include <boost/endian/detail/intrinsic.hpp>
 #include <boost/core/scoped_enum.hpp>
 #include <boost/static_assert.hpp>
 #include <algorithm>
 #include <cstring>  // for memcpy
+
+#include <boost/predef/other/endian.h>
+#if BOOST_ENDIAN_BIG_BYTE
+#   define BOOST_BIG_ENDIAN
+#   define BOOST_BYTE_ORDER 4321
+#endif
+#if BOOST_ENDIAN_LITTLE_BYTE
+#   define BOOST_LITTLE_ENDIAN
+#   define BOOST_BYTE_ORDER 1234
+#endif
+#if BOOST_ENDIAN_LITTLE_WORD
+#   define BOOST_PDP_ENDIAN
+#   define BOOST_BYTE_ORDER 2134
+#endif
 
 //------------------------------------- synopsis ---------------------------------------//
 
